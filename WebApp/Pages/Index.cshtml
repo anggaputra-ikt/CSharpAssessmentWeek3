@@ -1,0 +1,16 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Coffe In Aja</h1>
+
+</div>
+<a class="btn btn-success" asp-page="/Orders/Create">+ Add New Order</a>
+<h3>List Orders</h3>
+@foreach (var order in Model.Orders)
+{
+    <p>@order.Customer</p>
+}
