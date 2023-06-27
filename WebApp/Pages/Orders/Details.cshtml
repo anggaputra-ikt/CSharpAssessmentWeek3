@@ -2,30 +2,57 @@
 @model WebApp.Pages.Orders.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+	ViewData["Title"] = "Details";
+	var orderItems = Model.Order.OrderItems;
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Order.Customer)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.Customer)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Order.DineIn)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.DineIn)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Order?.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+<div class="card m-3">
+	<div class="card-header">
+		<a asp-page="/Index" class="h1 text-decoration-none">Coffe In Aja</a>
+	</div>
+	<div class="card-body">
+		<div class="d-flex">
+			<h3 class="text-start flex-grow-1">Details Order</h3>
+			<a class="btn btn-secondary" asp-page="Index">Back to List</a>
+		</div>
+		<dl class="row">
+			<dt class="col-sm-2">
+				@Html.DisplayNameFor(model => model.Order.Customer)
+			</dt>
+			<dd class="col-sm-10">
+				@Html.DisplayFor(model => model.Order.Customer)
+			</dd>
+			<dt class="col-sm-2">
+				@Html.DisplayNameFor(model => model.Order.DineIn)
+			</dt>
+			<dd class="col-sm-10">
+				@Html.DisplayFor(model => model.Order.DineIn)
+			</dd>
+		</dl>
+		<div class="d-flex">
+			<h3 class="text-start flex-grow-1">List Product</h3>
+			<a class="btn btn-success" asp-page="/OrderItems/Create" asp-route-id="@Model.Order.Id">+ Add to List</a>
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Product Name</th>
+					<th scope="col">Product Category</th>
+					<th scope="col">Product Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				@for (var i = 0; i < orderItems.Count; i++)
+				{
+					<tr>
+						<th scope="row">@(i + 1)</th>
+						<td>@orderItems[i]?.Product?.Name</td>
+						<td>@orderItems[i]?.Product?.Category</td>
+						<td>@orderItems[i]?.Product?.Price</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
 </div>

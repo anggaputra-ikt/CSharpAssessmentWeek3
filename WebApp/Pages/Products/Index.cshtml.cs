@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using CSharpAssessmentWeek2;
 using WebApp.Data;
 
-namespace WebApp.Pages.Orders
+namespace WebApp.Pages.Products
 {
     public class IndexModel : PageModel
     {
@@ -18,13 +19,13 @@ namespace WebApp.Pages.Orders
             _context = context;
         }
 
-        public IList<Order> Orders { get;set; } = default!;
+        public IList<Product> Product { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.Orders != null)
+            if (_context.Product != null)
             {
-                Orders = await _context.Orders.ToListAsync();
+                Product = await _context.Product.ToListAsync();
             }
         }
     }

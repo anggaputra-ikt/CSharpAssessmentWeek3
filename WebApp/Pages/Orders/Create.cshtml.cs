@@ -10,55 +10,35 @@ using WebApp.Data;
 
 namespace WebApp.Pages.Orders
 {
-    public class CreateModel : PageModel
-    {
-        private readonly WebApp.Data.ApplicationDbContext _context;
+	public class CreateModel : PageModel
+	{
+		private readonly WebApp.Data.ApplicationDbContext _context;
 
-        public CreateModel(WebApp.Data.ApplicationDbContext context)
-        {
-            _context = context;
-        }
+		public CreateModel(WebApp.Data.ApplicationDbContext context)
+		{
+			_context = context;
+		}
 
-        public IActionResult OnGet()
-        {
-            return Page();
-        }
+		public IActionResult OnGet()
+		{
+			return Page();
+		}
 
-        [BindProperty]
-        public Order Order { get; set; } = new();
-        public List<OrderItem> OrderItems { get; set; } = new();
-        [BindProperty]
-        public string Product { get; set; }
-        [BindProperty]
-        public int Quantity { get; set; }
-        [BindProperty]
-        public string Submit { get; set; }
+		[BindProperty]
+		public Order Order { get; set; } = new();
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid || _context.Orders == null || Order == null || Submit == "+ Add Product")
-            {
-                var product = new Product()
-                {
-                    Name = Product,
-                    Description = Product,
-                    Category = Product,
-                    Price = 0
-                };
-                var orderItem = new OrderItem()
-                {
-                    Product = product,
-                    Quantity = Quantity,
-                };
-                OrderItems.Add(orderItem);
-                return Page();
-            }
+		// To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+		public async Task<IActionResult> OnPostAsync()
+		{
+			if (!ModelState.IsValid || _context.Orders == null || Order == null)
+			{
+				return Page();
+			}
 
-            _context.Orders.Add(Order);
-            await _context.SaveChangesAsync();
+			_context.Orders.Add(Order);
+			await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
-        }
-    }
+			return RedirectToPage($"/Create/Orders/Details?id={Order.Id}");
+		}
+	}
 }

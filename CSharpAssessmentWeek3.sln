@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpAssessmentWeek2", "CSharpAssessment2\CSharpAssessmentWeek2.csproj", "{82413136-BD88-4006-9EF9-D55546E513C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpAssessmentWeek2", "CSharpAssessmentWeek2\CSharpAssessmentWeek2.csproj", "{82413136-BD88-4006-9EF9-D55546E513C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{FAC1AFD8-44B5-481C-A745-C5810E4A4764}"
 EndProject

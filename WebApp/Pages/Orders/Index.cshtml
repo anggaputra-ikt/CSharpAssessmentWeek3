@@ -5,38 +5,39 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Order[0].Customer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Order[0].DineIn)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Order) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DineIn)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="card m-3">
+    <div class="card-header">
+        <a asp-page="/Index" class="h1 text-decoration-none">Coffe In Aja</a>
+    </div>
+    <div class="card-body">
+        <div class="d-flex">
+            <h3 class="text-start flex-grow-1">List Order</h3>
+            <a class="btn btn-success" asp-page="/Orders/Create">+ Add New Order</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Dine In</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Orders.Count; i++)
+                {
+                    <tr>
+                        <th scope="row">@(i+1)</th>
+                        <td>@Model.Orders[i].Customer</td>
+                        <td>@(Model.Orders[i].DineIn ? "Yes" : "No")</td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@Model.Orders[i].Id">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@Model.Orders[i].Id">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@Model.Orders[i].Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
