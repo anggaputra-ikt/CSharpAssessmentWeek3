@@ -78,6 +78,9 @@ namespace WebApp.Migrations
                     b.Property<bool>("DineIn")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("Orders");

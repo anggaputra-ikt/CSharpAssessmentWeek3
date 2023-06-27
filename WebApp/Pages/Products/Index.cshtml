@@ -2,53 +2,69 @@
 @model WebApp.Pages.Products.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "List Product";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Price)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Product) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="card m-3">
+    <div class="card-header">
+        <a asp-page="/Index" class="h1 text-decoration-none">Coffe In Aja</a>
+    </div>
+    <div class="card-body">
+        <div class="d-flex">
+            <h3 class="text-start flex-grow-1">List Product</h3>
+            <a class="btn btn-info" asp-page="/Orders/Index">List Orders</a>
+            <a class="btn btn-success ms-2" asp-page="/Products/Create">+ Add New Product</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Product[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Product[0].Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Product[0].Category)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Product[0].Price)
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Product.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @(i + 1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Product[i].Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Product[i].Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Product[i].Category)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Product[i].Price)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@Model.Product[i].Id">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@Model.Product[i].Id">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@Model.Product[i].Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

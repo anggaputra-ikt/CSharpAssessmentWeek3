@@ -2,7 +2,7 @@
 @model WebApp.Pages.Orders.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "List Order";
 }
 
 <div class="card m-3">
@@ -12,7 +12,8 @@
     <div class="card-body">
         <div class="d-flex">
             <h3 class="text-start flex-grow-1">List Order</h3>
-            <a class="btn btn-success" asp-page="/Orders/Create">+ Add New Order</a>
+            <a class="btn btn-info" asp-page="/Products/Index">List Products</a>
+            <a class="btn btn-success ms-2" asp-page="/Orders/Create">+ Add New Order</a>
         </div>
         <table class="table table-striped">
             <thead>
@@ -20,6 +21,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Customer</th>
                     <th scope="col">Dine In</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -30,6 +32,7 @@
                         <th scope="row">@(i+1)</th>
                         <td>@Model.Orders[i].Customer</td>
                         <td>@(Model.Orders[i].DineIn ? "Yes" : "No")</td>
+                        <td>@(Model.Orders[i].Status ? "Done" : "Process")</td>
                         <td>
                             <a asp-page="./Edit" asp-route-id="@Model.Orders[i].Id">Edit</a> |
                             <a asp-page="./Details" asp-route-id="@Model.Orders[i].Id">Details</a> |

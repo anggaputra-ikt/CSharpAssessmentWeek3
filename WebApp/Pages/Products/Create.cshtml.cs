@@ -25,7 +25,7 @@ namespace WebApp.Pages.Products
         }
 
         [BindProperty]
-        public Product Product { get; set; } = default!;
+        public Product Product { get; set; } = new();
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD

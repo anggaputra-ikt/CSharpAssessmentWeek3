@@ -14,7 +14,8 @@ namespace WebApp.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Customer = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DineIn = table.Column<bool>(type: "bit", nullable: false)
+                    DineIn = table.Column<bool>(type: "bit", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -38,7 +38,7 @@ namespace WebApp.Pages.Orders
 			_context.Orders.Add(Order);
 			await _context.SaveChangesAsync();
 
-			return RedirectToPage($"/Create/Orders/Details?id={Order.Id}");
+			return Redirect($"./Details?id={Order.Id}");
 		}
 	}
 }

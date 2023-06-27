@@ -2,24 +2,23 @@
 @model DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Details Order Item";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>OrderItem</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.OrderItem.Quantity)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.OrderItem.Quantity)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.OrderItem?.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+<div class="card m-3">
+    <div class="card-header">
+        <a asp-page="/Index" class="h1 text-decoration-none">Coffe In Aja</a>
+    </div>
+    <div class="card-body">
+        <h3>Details Order</h3>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.OrderItem.Quantity)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.OrderItem.Quantity)
+            </dd>
+        </dl>
+    </div>
+    <a class="btn btn-secondary" asp-page="/Orders/Index">Back to List</a>
 </div>
